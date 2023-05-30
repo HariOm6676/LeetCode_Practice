@@ -7,8 +7,7 @@ class Solution {
 	public TreeNode helper(String s, int depth) {
 						int d=0;
             String n="";
-						
-            while(j<s.length() && s.charAt(j)=='-'){
+						while(j<s.length() && s.charAt(j)=='-'){
                 d+=1;
                 j+=1;
 						}
@@ -23,7 +22,7 @@ class Solution {
                 j+=1;
 						}
       
-		 System.out.println(n+"   "+d);
+		//  System.out.println(n+"   "+d);
     TreeNode node = new TreeNode(Integer.parseInt(n));
 		node.left = helper(s, depth + 1);
 		node.right = helper(s, depth + 1);
