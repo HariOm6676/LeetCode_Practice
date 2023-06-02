@@ -32,7 +32,7 @@ class Solution {
             m=(ps[j]-ps[middle])-(((middle==0)?0:ps[middle-1])-((i==0)?0:ps[i-1]));
             m-=r*(r+1);
         }
-        System.out.println(rs+" "+ls+" "+a.get(middle)+"  "+m);
+        // System.out.println(rs+" "+ls+" "+a.get(middle)+"  "+m);
         j++;
         i++;
         ans=Math.min(ans,m);
