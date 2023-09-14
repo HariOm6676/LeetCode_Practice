@@ -14,50 +14,28 @@ class Node {
 */
 
 class Solution {
-
     public Node copyRandomList(Node head) {
-        if(head==null)
+        if (head==null)
         return null;
-        Node n=new Node(head.val);
-        // if(head.next==null)
-        // return n;
-        Node temp1=head;
-        Node temp=n;
-        Node temp2=n;
-        int k=0;
-        HashMap<Node,Integer> map = new HashMap<>();
-        while(temp1!=null)
+        HashMap<Node, Node> map= new HashMap<Node,Node>();
+        Node dummy= new Node(-1);
+        Node ptr=head;
+        Node pre=dummy;
+        while(ptr!=null)
         {
-            map.put(temp1,k++);
-            temp1=temp1.next;
+            pre.next=new Node(ptr.val);
+            map.put(ptr,pre.next);
+            ptr=ptr.next;
+            pre=pre.next;
         }
-        temp1=head;
-        System.out.println(map);
-        head=head.next;
-        // n.random=head.random;
-        while(head!=null)
+        ptr=head;
+        pre=dummy.next;
+        while(ptr!=null)
         {
-            Node n1= new Node(head.val);
-            n.next=n1;
-            n=n1;
-            head=head.next;
+            pre.random=map.get(ptr.random);
+            pre=pre.next;
+            ptr=ptr.next;
         }
-        k=0;
-        HashMap<Integer,Node> map1 = new HashMap<>();
-        while(temp!=null)
-        {
-            map1.put(k++,temp);
-            temp=temp.next;
-        }
-        System.out.println(map1);
-        temp=temp2;
-        while(temp1!=null)
-        {
-            temp2.random=(map1.get(map.get(temp1.random)));
-            temp1=temp1.next;
-            temp2=temp2.next;
-        }
-        return temp;
+        return dummy.next;
     }
-
 }
