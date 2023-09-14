@@ -32,6 +32,7 @@ class Solution {
         pre=dummy.next;
         while(ptr!=null)
         {
+            if (ptr.random!=null)
             pre.random=map.get(ptr.random);
             pre=pre.next;
             ptr=ptr.next;
