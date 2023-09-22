@@ -1,0 +1,1 @@
+select actor_id, director_id from (select actor_id , director_id, count(*) as cnt from ActorDirector group by actor_id,director_id )as tbl1 where cnt >=3
