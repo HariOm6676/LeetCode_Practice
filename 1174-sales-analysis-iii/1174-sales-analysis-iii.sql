@@ -1,0 +1,1 @@
+select product_id, product_name from Product where product_id not in (select product_id from (select product.product_id,product.product_name, if((date(Sales.sale_date)  between '2019-01-1' and '2019-03-31') , 1,0) as dd  from product left join Sales on product.product_id=Sales.product_id ) as tbl1 where dd=0)
