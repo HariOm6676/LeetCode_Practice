@@ -9,21 +9,25 @@
  */
 
 class Solution {
-    TreeNode ans=null;
-    public void traverse(final TreeNode original, final TreeNode cloned, final TreeNode target)
+    // TreeNode ans=null;
+    public TreeNode traverse(final TreeNode original, final TreeNode cloned, final TreeNode target)
     {
         if (original==null || cloned==null)
-        return ;
+        return null;
         if (original==target)
         {
-            ans=cloned;
+            return cloned;
         }
-        traverse(original.left,cloned.left,target);
-        traverse(original.right,cloned.right,target);
-   
+        TreeNode left = traverse(original.left,cloned.left,target);
+        TreeNode right = traverse(original.right,cloned.right,target);
+        if (left!=null)
+        return left;
+        if (right!=null)
+        return right;
+   return null;
     }
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
-        traverse(original,cloned,target);
-        return ans;
+        return traverse(original,cloned,target);
+    
     }
 }
