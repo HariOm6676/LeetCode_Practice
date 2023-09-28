@@ -43,17 +43,16 @@ class Solution {
         if (l1==null)
         return l2;
         if (l2==null)
-        return l2;
-        ListNode c1=l1;
-        ListNode c2=l2;
-        ListNode res=new ListNode();
-        if (c1.val<=c2.val)
+        return l1;
+        
+        ListNode res=null;
+        if (l1.val<=l2.val)
         {
-            res=c1;
+            res=l1;
             res.next=MergeList2(l1.next,l2);
         }
         else{
-            res=c2;
+            res=l2;
             res.next=MergeList2(l1,l2.next);
         }
         return res;
@@ -78,7 +77,7 @@ class Solution {
         // return hah;
         ListNode left=sortList(head);
         ListNode right=sortList(hah);
-        return MergeList(left,right);
+        return MergeList2(left,right);
 
 
     }
