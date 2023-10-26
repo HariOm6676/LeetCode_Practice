@@ -1,0 +1,2 @@
+# Write your MySQL query statement below
+select query_name, CAST(Avg(rating/position)as DECIMAL(10,2) )as quality, cast(count(if(rating<3,rating,null))*100/count(*) as decimal(10,2)) as poor_query_percentage  from Queries group by query_name 
