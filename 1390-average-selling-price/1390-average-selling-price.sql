@@ -1,0 +1,5 @@
+select product_id, cast(if(Sum(sale)/sum(units) is null,0,Sum(sale)/sum(units) ) as decimal (10,2)) as average_price from(SELECT Prices.product_id,if(UnitsSold.purchase_date between Prices.start_date and Prices.end_date,(Prices.price*UnitsSold.units),0) as sale, if(UnitsSold.purchase_date between Prices.start_date and Prices.end_date,(UnitsSold.units),0) as units FROM Prices
+LEFT JOIN UnitsSold ON Prices.product_id = UnitsSold.product_id ) as a group by product_id
+
+# Write your MySQL query statement below
+# select Prices.product_id,cast(Sum(Prices.price*UnitsSold.units)/Sum(UnitsSold.units)as decimal (10,2)) as average_price from Prices inner join UnitsSold   on Prices.product_id= UnitsSold.product_id where UnitsSold.purchase_date between Prices.start_date and Prices.end_date  group by Prices.product_id
